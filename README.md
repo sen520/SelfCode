@@ -230,20 +230,15 @@ python -m pytest tests/ -m unit -v
 
 ### 🔄 **工作流程**
 
-```
-🎯 用户命令
-     ↓
-📁 文件扫描器 (FileScanner)
-     ↓  
-🧠 代码分析器 (CodeAnalyzer)
-     ↓
-🤖 LangGraph 工作流引擎
-     ↓
-🎨 优化策略引擎 (7大策略)
-     ↓
-✅ 测试验证 (CodeValidator)
-     ↓
-📊 报告生成器 (HTML报告)
+```mermaid
+flowchart LR
+    A[扫描 Python 文件] --> B[AST 与规则分析]
+    B --> C[生成问题清单]
+    C --> D[选择优化策略]
+    D --> E[备份并修改文件]
+    E --> F[语法与测试验证]
+    F -->|仍有问题| B
+    F -->|完成或达到上限| G[生成 HTML 报告]
 ```
 
 ### 🧱 **核心技术栈**
